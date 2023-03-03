@@ -27,6 +27,18 @@ use \PDO;
             }
         }
 
+        public function prepareExecute($query, $params = []) {
+            try {
+                $statement = $this->conexao->prepare($query);
+                $statement->execute($params);
+                return $statement;
+            } catch(PDOException $e) {
+                die("ERROR: ".$e->getMessage()); 
+            } 
+        }
+        
+        
+
         public function execute($query,$params=[]){
             try{
                 $statement = $this->conexao->prepare($query);

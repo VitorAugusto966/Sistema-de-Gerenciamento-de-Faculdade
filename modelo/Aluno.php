@@ -68,11 +68,14 @@ class Aluno
         return (new Database('aluno'))->select($where, $order, $limit)
             ->fetchAll(PDO::FETCH_CLASS, self::class);
     }
-    public static function getUsuario($login)
-    {
-        return (new Database('aluno'))->select("login=".'"'.$login.'"')
-            ->fetchObject(self::class);
+    public static function getUsuario($login) {
+        $db = new Database('aluno');
+        $sql = "SELECT * FROM aluno WHERE login = ?";
+        return $db->prepareExecute($sql, [$login])->fetchObject(self::class);
     }
+    
+    
+
 
     public static function getAlunoCodigo($prontuario)
     {
