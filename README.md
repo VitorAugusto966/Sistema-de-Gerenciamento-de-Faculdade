@@ -1,1 +1,1 @@
-## Sistema feito para o gerenciamento de faculdades
+## Sistema de gerenciamento de gerenciamento para faculdade.
